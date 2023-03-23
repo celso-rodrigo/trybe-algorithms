@@ -1,14 +1,19 @@
 def find_duplicate(nums):
-    """Faça o código aqui."""
-    if not nums or not isinstance(nums, list):
+    """
+    Recebe uma lista de números e retorna o número repetido ou False
+    caso recebe um valor inválido ou lista sem números repetidos
+    """
+
+    if not isinstance(nums, list):
         return False
 
-    unique_nums = []
-    for num in nums:
+    nums.sort()
+
+    for i in range(len(nums) - 1):
+        num = nums[i]
         if not isinstance(num, int) or num < 0:
             return False
-        elif num in unique_nums:
+        if num == nums[i + 1]:
             return num
-        else:
-            unique_nums.append(num)
+
     return False
